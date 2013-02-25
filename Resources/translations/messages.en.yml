@@ -1,0 +1,11 @@
+error: Error
+
+payment:
+    error: 'An error occurred when the payment'
+
+    status:
+        declined: 'Payment declined'
+        error: 'Technical error'
+        filtered: 'Payment filtered'
+
+    success: 'Payment has been successfully completed'

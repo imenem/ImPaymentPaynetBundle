@@ -1,0 +1,21 @@
+parameters:
+    im_paynet_payment.paynet_form_plugin.class: Im\PaymentPaynetBundle\Plugin\PaynetFormPlugin
+    im_paynet_payment.paynet_form_type.class: Im\PaymentPaynetBundle\Form\PaynetFormType
+
+services:
+    # Плагин для оплаты с помощью формы Paynet
+    payment.plugin.paynet_form:
+        class: %im_paynet_payment.paynet_form_plugin.class%
+        arguments:
+            - '@router'
+            - '@doctrine.orm.entity_manager'
+            - '%payment.plugin.paynet_form.config%'
+        tags:
+            - { name: payment.plugin }
+
+    # Форма для проверки платежного сервиса-заглушки
+    payment.form.paynet_form_type:
+        class: %im_paynet_payment.paynet_form_type.class%
+        tags:
+            - { name: payment.method_form_type }
+            - { name: form.type, alias: paynet_form }

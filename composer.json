@@ -1,0 +1,21 @@
+{
+    "name": "imenem/payment-paynet-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony ImPaymentPaynetBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Artem Ponomarenko",
+            "email": "imenem@inbox.ru"
+        }
+    ],
+    "require": {
+        "php":                      ">=5.4.4",
+        "symfony/framework-bundle": ">=2.0",
+        "jms/payment-core-bundle":  "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Im\\PaymentPaynetBundle": "" }
+    },
+    "target-dir": "Im/PaymentPaynetBundle"
+}

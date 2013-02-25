@@ -1,0 +1,3 @@
+validate_payment_response:
+    path:  /payment/paynet/validate_response/{id}
+    defaults: { _controller: "ImPaymentPaynetBundle:PaymentResponse:validateResponse" }
