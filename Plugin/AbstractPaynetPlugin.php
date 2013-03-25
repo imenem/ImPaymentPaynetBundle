@@ -304,24 +304,19 @@ abstract class AbstractPaynetPlugin extends GatewayPlugin
     }
 
     /**
-     * Метод сохраняет сущность в БД
-     *
-     * @param       object      $entity     Сущность для сохранения в БД
-     */
-    protected function saveEntity($entity)
-    {
-        $this->entity_manager->persist($entity);
-        $this->entity_manager->flush();
-    }
-
-    /**
      * Метод сохраняет все переданные методу аргументы-сущности в БД.
      */
     protected function saveEntities()
     {
-        foreach (func_get_args() as $entity)
-        {
-            $this->saveEntity($entity);
-        }
+        $entities = func_get_args();
+
+        $this->getEntityManager()
+            ->transactional(function(ObjectManager $em) use ($entities)
+            {
+                foreach ($entities as $entity)
+                {
+                    $em->persist($entity);
+                }
+            });
     }
 }
